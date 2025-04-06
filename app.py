@@ -11,7 +11,6 @@ gemini_api_key = st.secrets['gemini_api_key']
 
 # Initialize the Gemini Model
 model = None
-data_context = ""
 if gemini_api_key:
     try:
         genai.configure(api_key=gemini_api_key)
@@ -37,15 +36,23 @@ st.subheader("Upload CSV for Analysis")
 uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
 if uploaded_file is not None:
     try:
-        st.session_state.uploaded_data = pd.read_csv(uploaded_file)
+        df = pd.read_csv(uploaded_file)
+        st.session_state.uploaded_data = df
         st.success("File successfully uploaded and read.")
         st.write("### Uploaded Data Preview")
-        st.dataframe(st.session_state.uploaded_data.head())
+        st.dataframe(df.head())
 
-        # Prepare data context for model
-        description = st.session_state.uploaded_data.describe(include='all').to_string()
-        sample_rows = st.session_state.uploaded_data.head(3).to_string(index=False)
-        st.session_state.data_context = f"This dataset has the following stats:\n{description}\n\nHere are sample rows:\n{sample_rows}"
+        # Prepare detailed context for model
+        description = df.describe(include='all').to_string()
+        sample_rows = df.head(3).to_string(index=False)
+        columns_info = "\n".join([f"- {col}: {dtype}" for col, dtype in zip(df.columns, df.dtypes)])
+
+        st.session_state.data_context = (
+            f"You are a helpful data analyst AI. The user uploaded a dataset with the following structure:\n"
+            f"Columns and Types:\n{columns_info}\n\n"
+            f"Descriptive Statistics:\n{description}\n\n"
+            f"Sample Records:\n{sample_rows}"
+        )
 
     except Exception as e:
         st.error(f"An error occurred while reading the file: {e}")
@@ -61,7 +68,10 @@ if user_input := st.chat_input("Ask anything about your data or start a chat..."
     if model:
         try:
             if st.session_state.uploaded_data is not None:
-                prompt = f"You are a data analyst. Here is the dataset context:\n\n{st.session_state.data_context}\n\nNow answer the question: {user_input}"
+                prompt = (
+                    f"{st.session_state.data_context}\n\n"
+                    f"Now answer the user's question: {user_input}"
+                )
                 response = model.generate_content(prompt)
                 bot_response = response.text
                 st.session_state.chat_history.append(("assistant", bot_response))
