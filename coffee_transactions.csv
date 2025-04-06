@@ -1,0 +1,201 @@
+invoice_number,date,city,item_description,store_name,unit_price,quantity_sold,sale
+INV-2024-00000,2024-11-12,Bangkok,Latte,Kamu,116.96,4,467.84
+INV-2024-00001,2024-03-23,Khon Kaen,Mocha,Starbucks,97.12,3,291.36
+INV-2024-00002,2024-02-19,Khon Kaen,Latte,Kamu,108.34,5,541.7
+INV-2024-00003,2024-11-12,Phuket,Mocha,Local Roasters,93.18,5,465.9
+INV-2024-00004,2024-04-06,Khon Kaen,Latte,Starbucks,57.54,2,115.08
+INV-2024-00005,2024-04-12,Khon Kaen,Americano,Starbucks,82.13,1,82.13
+INV-2024-00006,2024-09-01,Khon Kaen,Cappuccino,Cafe Amazon,116.29,2,232.58
+INV-2024-00007,2024-10-02,Chiang Mai,Cappuccino,Local Roasters,88.27,5,441.35
+INV-2024-00008,2024-11-13,Hat Yai,Cappuccino,Kamu,51.41,5,257.05
+INV-2024-00009,2024-09-03,Khon Kaen,Cappuccino,Starbucks,57.02,5,285.1
+INV-2024-00010,2024-12-11,Chiang Mai,Americano,Starbucks,83.61,3,250.83
+INV-2024-00011,2024-03-30,Khon Kaen,Americano,Starbucks,97.78,3,293.34
+INV-2024-00012,2024-03-12,Chiang Mai,Americano,Cafe Amazon,85.27,2,170.54
+INV-2024-00013,2024-11-19,Khon Kaen,Espresso,Local Roasters,118.95,3,356.85
+INV-2024-00014,2024-07-16,Hat Yai,Latte,Starbucks,41.51,2,83.02
+INV-2024-00015,2024-03-17,Hat Yai,Mocha,Kamu,44.49,2,88.98
+INV-2024-00016,2024-08-17,Phuket,Latte,True Coffee,79.25,4,317.0
+INV-2024-00017,2024-09-03,Hat Yai,Americano,Kamu,97.28,1,97.28
+INV-2024-00018,2024-07-03,Hat Yai,Espresso,Starbucks,100.2,1,100.2
+INV-2024-00019,2024-11-21,Phuket,Cappuccino,Kamu,94.69,3,284.07
+INV-2024-00020,2024-03-02,Phuket,Americano,Cafe Amazon,52.45,2,104.9
+INV-2024-00021,2024-05-01,Chiang Mai,Mocha,True Coffee,83.82,3,251.46
+INV-2024-00022,2024-04-25,Phuket,Latte,Local Roasters,82.2,2,164.4
+INV-2024-00023,2024-01-21,Bangkok,Americano,True Coffee,73.85,2,147.7
+INV-2024-00024,2024-06-09,Khon Kaen,Cappuccino,Local Roasters,90.24,2,180.48
+INV-2024-00025,2024-07-17,Phuket,Cappuccino,True Coffee,66.2,3,198.6
+INV-2024-00026,2024-01-01,Bangkok,Cappuccino,Starbucks,119.71,5,598.55
+INV-2024-00027,2024-07-25,Chiang Mai,Latte,Local Roasters,78.84,5,394.2
+INV-2024-00028,2024-10-30,Hat Yai,Americano,Kamu,59.41,1,59.41
+INV-2024-00029,2024-12-17,Khon Kaen,Espresso,Kamu,46.49,4,185.96
+INV-2024-00030,2024-04-28,Hat Yai,Mocha,Local Roasters,102.77,3,308.31
+INV-2024-00031,2024-12-09,Bangkok,Americano,True Coffee,108.65,4,434.6
+INV-2024-00032,2024-05-15,Khon Kaen,Cappuccino,True Coffee,43.1,5,215.5
+INV-2024-00033,2024-06-02,Hat Yai,Cappuccino,Cafe Amazon,46.61,5,233.05
+INV-2024-00034,2024-11-08,Khon Kaen,Latte,Kamu,65.61,5,328.05
+INV-2024-00035,2024-08-31,Phuket,Espresso,Starbucks,105.96,4,423.84
+INV-2024-00036,2024-10-15,Bangkok,Mocha,Cafe Amazon,42.54,4,170.16
+INV-2024-00037,2024-02-19,Phuket,Americano,True Coffee,89.6,3,268.8
+INV-2024-00038,2024-02-17,Hat Yai,Espresso,Starbucks,59.97,1,59.97
+INV-2024-00039,2024-06-24,Bangkok,Cappuccino,Cafe Amazon,102.76,5,513.8
+INV-2024-00040,2024-04-14,Khon Kaen,Cappuccino,Local Roasters,105.15,1,105.15
+INV-2024-00041,2024-08-30,Khon Kaen,Mocha,Kamu,93.47,3,280.41
+INV-2024-00042,2024-05-25,Phuket,Americano,True Coffee,87.18,2,174.36
+INV-2024-00043,2024-05-24,Chiang Mai,Americano,Kamu,68.12,1,68.12
+INV-2024-00044,2024-03-08,Hat Yai,Espresso,Kamu,103.85,1,103.85
+INV-2024-00045,2024-12-21,Phuket,Espresso,Starbucks,91.93,5,459.65
+INV-2024-00046,2024-05-22,Khon Kaen,Mocha,Kamu,79.42,2,158.84
+INV-2024-00047,2024-03-11,Chiang Mai,Cappuccino,Starbucks,87.05,2,174.1
+INV-2024-00048,2024-12-16,Phuket,Espresso,Local Roasters,84.45,3,253.35
+INV-2024-00049,2024-12-08,Phuket,Latte,Kamu,59.8,5,299.0
+INV-2024-00050,2024-10-17,Chiang Mai,Latte,Cafe Amazon,110.44,5,552.2
+INV-2024-00051,2024-04-13,Hat Yai,Cappuccino,Cafe Amazon,118.13,1,118.13
+INV-2024-00052,2024-06-28,Khon Kaen,Latte,Kamu,101.71,2,203.42
+INV-2024-00053,2024-06-10,Phuket,Mocha,Starbucks,92.54,3,277.62
+INV-2024-00054,2024-08-22,Phuket,Cappuccino,Starbucks,98.93,3,296.79
+INV-2024-00055,2024-08-01,Bangkok,Espresso,Kamu,117.5,4,470.0
+INV-2024-00056,2024-09-29,Chiang Mai,Espresso,True Coffee,97.65,4,390.6
+INV-2024-00057,2024-01-25,Hat Yai,Americano,True Coffee,80.96,3,242.88
+INV-2024-00058,2024-07-05,Hat Yai,Cappuccino,Starbucks,91.83,4,367.32
+INV-2024-00059,2024-05-26,Hat Yai,Americano,Kamu,43.18,3,129.54
+INV-2024-00060,2024-02-17,Chiang Mai,Latte,Starbucks,62.45,3,187.35
+INV-2024-00061,2024-10-14,Phuket,Mocha,True Coffee,107.92,4,431.68
+INV-2024-00062,2024-09-06,Khon Kaen,Mocha,True Coffee,97.9,3,293.7
+INV-2024-00063,2024-09-09,Hat Yai,Mocha,Kamu,82.52,5,412.6
+INV-2024-00064,2024-09-06,Khon Kaen,Espresso,Cafe Amazon,79.68,4,318.72
+INV-2024-00065,2024-02-08,Khon Kaen,Latte,Kamu,79.04,3,237.12
+INV-2024-00066,2024-03-04,Chiang Mai,Americano,Local Roasters,42.03,3,126.09
+INV-2024-00067,2024-06-19,Bangkok,Americano,Starbucks,91.4,2,182.8
+INV-2024-00068,2024-11-21,Hat Yai,Espresso,True Coffee,94.76,4,379.04
+INV-2024-00069,2024-11-12,Hat Yai,Americano,Cafe Amazon,102.55,2,205.1
+INV-2024-00070,2024-03-29,Hat Yai,Americano,True Coffee,117.84,2,235.68
+INV-2024-00071,2024-03-28,Hat Yai,Mocha,True Coffee,108.78,4,435.12
+INV-2024-00072,2024-11-05,Bangkok,Espresso,Kamu,108.29,1,108.29
+INV-2024-00073,2024-12-28,Phuket,Cappuccino,Cafe Amazon,109.29,5,546.45
+INV-2024-00074,2024-04-02,Chiang Mai,Mocha,Kamu,73.13,1,73.13
+INV-2024-00075,2024-01-03,Hat Yai,Espresso,Starbucks,104.8,2,209.6
+INV-2024-00076,2024-02-16,Phuket,Americano,True Coffee,81.49,1,81.49
+INV-2024-00077,2024-11-06,Hat Yai,Espresso,Cafe Amazon,83.5,1,83.5
+INV-2024-00078,2024-07-11,Bangkok,Espresso,True Coffee,63.78,4,255.12
+INV-2024-00079,2024-12-28,Chiang Mai,Cappuccino,Starbucks,117.75,4,471.0
+INV-2024-00080,2024-08-12,Hat Yai,Latte,Starbucks,48.91,4,195.64
+INV-2024-00081,2024-06-07,Hat Yai,Mocha,Starbucks,87.67,3,263.01
+INV-2024-00082,2024-05-25,Chiang Mai,Americano,Local Roasters,45.82,3,137.46
+INV-2024-00083,2024-05-03,Bangkok,Latte,True Coffee,79.18,2,158.36
+INV-2024-00084,2024-04-02,Hat Yai,Cappuccino,Local Roasters,119.87,4,479.48
+INV-2024-00085,2024-07-16,Bangkok,Cappuccino,Starbucks,66.5,4,266.0
+INV-2024-00086,2024-08-24,Bangkok,Espresso,Starbucks,89.54,5,447.7
+INV-2024-00087,2024-03-29,Bangkok,Americano,True Coffee,65.47,5,327.35
+INV-2024-00088,2024-04-10,Phuket,Cappuccino,Starbucks,113.43,5,567.15
+INV-2024-00089,2024-11-18,Hat Yai,Latte,True Coffee,105.28,2,210.56
+INV-2024-00090,2024-12-30,Hat Yai,Americano,True Coffee,88.06,5,440.3
+INV-2024-00091,2024-08-29,Chiang Mai,Americano,Cafe Amazon,50.93,2,101.86
+INV-2024-00092,2024-11-10,Khon Kaen,Cappuccino,Kamu,91.5,5,457.5
+INV-2024-00093,2024-04-14,Phuket,Cappuccino,Local Roasters,92.47,2,184.94
+INV-2024-00094,2024-03-04,Chiang Mai,Americano,True Coffee,48.04,4,192.16
+INV-2024-00095,2024-04-22,Khon Kaen,Americano,True Coffee,100.9,4,403.6
+INV-2024-00096,2024-09-18,Khon Kaen,Mocha,Kamu,84.62,5,423.1
+INV-2024-00097,2024-08-25,Bangkok,Espresso,Starbucks,87.3,4,349.2
+INV-2024-00098,2024-12-20,Hat Yai,Mocha,Kamu,77.56,5,387.8
+INV-2024-00099,2024-01-08,Chiang Mai,Cappuccino,Kamu,106.76,4,427.04
+INV-2024-00100,2024-02-18,Chiang Mai,Americano,Starbucks,110.11,1,110.11
+INV-2024-00101,2024-09-23,Chiang Mai,Latte,Local Roasters,56.86,1,56.86
+INV-2024-00102,2024-10-22,Bangkok,Latte,Cafe Amazon,57.27,1,57.27
+INV-2024-00103,2024-01-31,Phuket,Espresso,Cafe Amazon,61.79,4,247.16
+INV-2024-00104,2024-01-23,Phuket,Espresso,Local Roasters,48.33,3,144.99
+INV-2024-00105,2024-07-05,Bangkok,Mocha,Starbucks,49.52,5,247.6
+INV-2024-00106,2024-01-15,Khon Kaen,Latte,Cafe Amazon,63.58,3,190.74
+INV-2024-00107,2024-09-06,Chiang Mai,Latte,Cafe Amazon,116.27,1,116.27
+INV-2024-00108,2024-10-06,Phuket,Cappuccino,Cafe Amazon,112.68,5,563.4
+INV-2024-00109,2024-05-02,Chiang Mai,Mocha,Local Roasters,46.86,4,187.44
+INV-2024-00110,2024-09-05,Khon Kaen,Espresso,Starbucks,114.46,1,114.46
+INV-2024-00111,2024-01-05,Phuket,Mocha,Local Roasters,119.12,5,595.6
+INV-2024-00112,2024-05-25,Hat Yai,Americano,Cafe Amazon,112.02,1,112.02
+INV-2024-00113,2024-05-12,Bangkok,Cappuccino,Kamu,94.05,2,188.1
+INV-2024-00114,2024-01-28,Hat Yai,Mocha,Starbucks,101.52,2,203.04
+INV-2024-00115,2024-10-30,Hat Yai,Espresso,Starbucks,68.43,3,205.29
+INV-2024-00116,2024-12-21,Hat Yai,Cappuccino,Local Roasters,79.37,4,317.48
+INV-2024-00117,2024-09-19,Chiang Mai,Espresso,Local Roasters,51.08,2,102.16
+INV-2024-00118,2024-03-30,Bangkok,Latte,True Coffee,107.18,1,107.18
+INV-2024-00119,2024-05-07,Phuket,Espresso,Cafe Amazon,92.35,2,184.7
+INV-2024-00120,2024-02-13,Phuket,Latte,True Coffee,61.49,1,61.49
+INV-2024-00121,2024-09-15,Phuket,Mocha,Starbucks,109.35,5,546.75
+INV-2024-00122,2024-09-24,Khon Kaen,Latte,Cafe Amazon,41.14,1,41.14
+INV-2024-00123,2024-09-06,Bangkok,Latte,Starbucks,67.89,5,339.45
+INV-2024-00124,2024-06-12,Hat Yai,Americano,Local Roasters,66.05,5,330.25
+INV-2024-00125,2024-09-18,Bangkok,Latte,Cafe Amazon,93.5,5,467.5
+INV-2024-00126,2024-08-16,Hat Yai,Espresso,Local Roasters,51.04,4,204.16
+INV-2024-00127,2024-12-04,Bangkok,Latte,Starbucks,99.2,1,99.2
+INV-2024-00128,2024-11-30,Bangkok,Espresso,Cafe Amazon,41.51,4,166.04
+INV-2024-00129,2024-10-15,Phuket,Mocha,Kamu,86.79,5,433.95
+INV-2024-00130,2024-05-17,Phuket,Espresso,Cafe Amazon,115.68,5,578.4
+INV-2024-00131,2024-03-28,Phuket,Cappuccino,True Coffee,50.95,5,254.75
+INV-2024-00132,2024-07-04,Bangkok,Cappuccino,Starbucks,42.36,3,127.08
+INV-2024-00133,2024-10-05,Chiang Mai,Americano,True Coffee,81.86,4,327.44
+INV-2024-00134,2024-08-25,Phuket,Espresso,Local Roasters,104.19,1,104.19
+INV-2024-00135,2024-01-29,Phuket,Espresso,True Coffee,96.95,4,387.8
+INV-2024-00136,2024-07-07,Bangkok,Latte,Local Roasters,42.07,2,84.14
+INV-2024-00137,2024-01-28,Phuket,Americano,Cafe Amazon,74.77,1,74.77
+INV-2024-00138,2024-12-16,Bangkok,Cappuccino,Local Roasters,76.1,3,228.3
+INV-2024-00139,2024-05-21,Bangkok,Americano,Kamu,118.33,1,118.33
+INV-2024-00140,2024-07-26,Khon Kaen,Espresso,Kamu,75.18,1,75.18
+INV-2024-00141,2024-05-02,Hat Yai,Mocha,Kamu,119.66,4,478.64
+INV-2024-00142,2024-01-14,Hat Yai,Americano,Kamu,74.3,4,297.2
+INV-2024-00143,2024-10-17,Hat Yai,Espresso,True Coffee,48.01,4,192.04
+INV-2024-00144,2024-11-19,Khon Kaen,Cappuccino,True Coffee,86.0,2,172.0
+INV-2024-00145,2024-10-12,Khon Kaen,Americano,Cafe Amazon,117.4,4,469.6
+INV-2024-00146,2024-04-14,Khon Kaen,Espresso,Local Roasters,59.2,2,118.4
+INV-2024-00147,2024-09-21,Phuket,Mocha,True Coffee,111.97,3,335.91
+INV-2024-00148,2024-03-30,Khon Kaen,Espresso,True Coffee,51.99,2,103.98
+INV-2024-00149,2024-07-16,Khon Kaen,Cappuccino,Local Roasters,54.21,2,108.42
+INV-2024-00150,2024-12-11,Bangkok,Cappuccino,Local Roasters,58.16,1,58.16
+INV-2024-00151,2024-02-29,Chiang Mai,Espresso,Starbucks,49.76,3,149.28
+INV-2024-00152,2024-03-07,Khon Kaen,Espresso,True Coffee,102.12,4,408.48
+INV-2024-00153,2024-07-13,Khon Kaen,Cappuccino,Cafe Amazon,52.41,3,157.23
+INV-2024-00154,2024-10-16,Hat Yai,Mocha,Cafe Amazon,70.5,1,70.5
+INV-2024-00155,2024-10-09,Phuket,Mocha,Starbucks,70.46,3,211.38
+INV-2024-00156,2024-10-22,Hat Yai,Latte,Local Roasters,71.67,3,215.01
+INV-2024-00157,2024-05-18,Hat Yai,Espresso,Kamu,72.9,4,291.6
+INV-2024-00158,2024-09-28,Chiang Mai,Americano,Starbucks,74.19,5,370.95
+INV-2024-00159,2024-03-18,Chiang Mai,Latte,Cafe Amazon,90.08,4,360.32
+INV-2024-00160,2024-09-08,Chiang Mai,Espresso,Kamu,51.19,2,102.38
+INV-2024-00161,2024-07-16,Chiang Mai,Americano,Starbucks,97.72,3,293.16
+INV-2024-00162,2024-11-13,Chiang Mai,Americano,Kamu,96.73,5,483.65
+INV-2024-00163,2024-10-23,Bangkok,Espresso,Cafe Amazon,117.73,5,588.65
+INV-2024-00164,2024-12-04,Phuket,Mocha,Kamu,105.95,2,211.9
+INV-2024-00165,2024-07-26,Phuket,Americano,Starbucks,96.69,3,290.07
+INV-2024-00166,2024-02-19,Khon Kaen,Latte,Cafe Amazon,109.19,1,109.19
+INV-2024-00167,2024-02-21,Khon Kaen,Latte,Kamu,56.17,4,224.68
+INV-2024-00168,2024-02-25,Hat Yai,Americano,Cafe Amazon,119.89,5,599.45
+INV-2024-00169,2024-06-26,Khon Kaen,Latte,Local Roasters,94.24,5,471.2
+INV-2024-00170,2024-11-09,Phuket,Latte,True Coffee,60.99,5,304.95
+INV-2024-00171,2024-06-06,Phuket,Cappuccino,True Coffee,105.51,5,527.55
+INV-2024-00172,2024-04-17,Phuket,Latte,True Coffee,90.37,3,271.11
+INV-2024-00173,2024-06-10,Phuket,Cappuccino,Local Roasters,78.9,3,236.7
+INV-2024-00174,2024-08-23,Chiang Mai,Latte,Kamu,105.97,2,211.94
+INV-2024-00175,2024-12-09,Hat Yai,Mocha,True Coffee,80.55,1,80.55
+INV-2024-00176,2024-08-17,Bangkok,Americano,Local Roasters,86.04,1,86.04
+INV-2024-00177,2024-05-25,Phuket,Latte,Starbucks,62.89,1,62.89
+INV-2024-00178,2024-03-09,Chiang Mai,Espresso,Starbucks,112.95,2,225.9
+INV-2024-00179,2024-05-27,Chiang Mai,Americano,Cafe Amazon,106.65,4,426.6
+INV-2024-00180,2024-07-03,Phuket,Mocha,Starbucks,62.23,4,248.92
+INV-2024-00181,2024-03-31,Chiang Mai,Americano,True Coffee,40.55,5,202.75
+INV-2024-00182,2024-06-01,Hat Yai,Latte,Kamu,40.02,2,80.04
+INV-2024-00183,2024-05-05,Khon Kaen,Mocha,True Coffee,46.36,3,139.08
+INV-2024-00184,2024-09-18,Phuket,Espresso,Starbucks,75.51,1,75.51
+INV-2024-00185,2024-10-21,Chiang Mai,Espresso,Kamu,80.75,5,403.75
+INV-2024-00186,2024-09-07,Phuket,Espresso,True Coffee,102.7,1,102.7
+INV-2024-00187,2024-11-17,Hat Yai,Americano,True Coffee,54.7,1,54.7
+INV-2024-00188,2024-01-24,Hat Yai,Mocha,True Coffee,65.32,5,326.6
+INV-2024-00189,2024-10-25,Phuket,Espresso,Cafe Amazon,114.78,1,114.78
+INV-2024-00190,2024-02-14,Khon Kaen,Latte,Cafe Amazon,89.07,1,89.07
+INV-2024-00191,2024-03-21,Khon Kaen,Americano,Kamu,57.27,3,171.81
+INV-2024-00192,2024-09-03,Khon Kaen,Espresso,Cafe Amazon,80.2,5,401.0
+INV-2024-00193,2024-12-04,Chiang Mai,Latte,Cafe Amazon,45.93,5,229.65
+INV-2024-00194,2024-01-18,Phuket,Mocha,True Coffee,50.39,2,100.78
+INV-2024-00195,2024-08-11,Hat Yai,Latte,True Coffee,55.57,1,55.57
+INV-2024-00196,2024-08-09,Chiang Mai,Latte,Local Roasters,93.37,3,280.11
+INV-2024-00197,2024-11-24,Hat Yai,Americano,Starbucks,107.61,4,430.44
+INV-2024-00198,2024-06-15,Khon Kaen,Latte,True Coffee,75.15,2,150.3
+INV-2024-00199,2024-04-26,Chiang Mai,Espresso,True Coffee,59.2,3,177.6

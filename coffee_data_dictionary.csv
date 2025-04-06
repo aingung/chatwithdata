@@ -1,0 +1,9 @@
+column_name,data_type,description
+invoice_number,STRING,Unique invoice identifier
+date,DATE,Date of coffee purchase
+city,STRING,City where the store is located
+item_description,STRING,Description of the coffee item
+store_name,STRING,Name of the store (formerly vendor name)
+unit_price,FLOAT,Retail price per coffee item (THB)
+quantity_sold,INTEGER,Number of items sold
+sale,FLOAT,Total sale amount in THB
