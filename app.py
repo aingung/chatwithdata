@@ -62,8 +62,8 @@ if uploaded_files:
         + "\n\n".join(all_contexts)
     )
 
-# Upload Data Dictionary (Optional)
-st.subheader("Upload Data Dictionary (Optional)")
+# Upload Data Dictionary
+st.subheader("Upload Data Dictionary")
 dict_file = st.file_uploader("Choose a CSV data dictionary file", type=["csv"], key="dict_file")
 if dict_file is not None:
     try:
