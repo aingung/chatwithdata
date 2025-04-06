@@ -9,19 +9,30 @@ st.title("My Chatbot and Data Analysis App")
 st.subheader("Conversation and Data Analysis")
 
 # Chat history tools
+if "chat_cleared" not in st.session_state:
+    st.session_state.chat_cleared = False
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
+
 col1, col2 = st.columns(2)
 with col1:
     if st.button("🧹 Clear Chat History"):
         st.session_state.chat_history = []
+        st.session_state.chat_cleared = True
 with col2:
-    if "chat_history" in st.session_state and st.session_state.chat_history:
+    if st.session_state.chat_history:
         chat_text = "\n\n".join([f"{role.upper()}: {message}" for role, message in st.session_state.chat_history])
         st.download_button("💾 Download Chat History", data=chat_text, file_name="chat_history.txt")
 
-# Capture Gemini API Key
-gemini_api_key = st.secrets['gemini_api_key']
+# Display previous chat history
+if not st.session_state.chat_cleared:
+    for role, message in st.session_state.chat_history:
+        st.chat_message(role).markdown(message)
+else:
+    st.info("Chat history has been cleared. Refresh the page to hide old messages.")
 
-# Initialize the Gemini Model
+# Gemini API Setup
+gemini_api_key = st.secrets['gemini_api_key']
 model = None
 if gemini_api_key:
     try:
@@ -31,19 +42,13 @@ if gemini_api_key:
     except Exception as e:
         st.error(f"An error occurred while setting up the Gemini model: {e}")
 
-# Initialize session state
-if "chat_history" not in st.session_state:
-    st.session_state.chat_history = []
+# Other session state
 if "uploaded_data" not in st.session_state:
     st.session_state.uploaded_data = []
 if "data_context" not in st.session_state:
     st.session_state.data_context = ""
 if "data_dictionary" not in st.session_state:
     st.session_state.data_dictionary = None
-
-# Display previous chat history 
-for role, message in st.session_state.chat_history:
-    st.chat_message(role).markdown(message)
 
 # Upload CSV Files
 st.subheader("Upload CSV Files for Analysis")
