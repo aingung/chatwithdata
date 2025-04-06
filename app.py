@@ -8,6 +8,16 @@ import traceback
 st.title("My Chatbot and Data Analysis App") 
 st.subheader("Conversation and Data Analysis")
 
+# Chat history tools
+col1, col2 = st.columns(2)
+with col1:
+    if st.button("🧹 Clear Chat History"):
+        st.session_state.chat_history = []
+with col2:
+    if "chat_history" in st.session_state and st.session_state.chat_history:
+        chat_text = "\n\n".join([f"{role.upper()}: {message}" for role, message in st.session_state.chat_history])
+        st.download_button("💾 Download Chat History", data=chat_text, file_name="chat_history.txt")
+
 # Capture Gemini API Key
 gemini_api_key = st.secrets['gemini_api_key']
 
@@ -49,7 +59,6 @@ if uploaded_files:
             st.write(f"### Preview of {file.name}")
             st.dataframe(df.head())
 
-            # Build context for Gemini
             description = df.describe(include='all').to_string()
             sample_rows = df.head(3).to_string(index=False)
             columns_info = "\n".join([f"- {col}: {dtype}" for col, dtype in zip(df.columns, df.dtypes)])
@@ -128,19 +137,13 @@ Here's the context:
                 generated_code = response.text
 
                 try:
-                    # Clean up Gemini output
                     cleaned_code = generated_code.strip().replace("```python", "").replace("```", "")
-
-                    # Provide pd for datetime conversion
                     local_vars = {df_name: df.copy(), "pd": pd}
                     exec(cleaned_code, {}, local_vars)
-
-                    # Get the result
                     answer_result = local_vars.get("ANSWER", "No result in variable ANSWER")
                     st.session_state.chat_history.append(("assistant", f"**Result:**\n{answer_result}"))
                     st.chat_message("assistant").markdown(f"**Result Preview:**\n{answer_result}")
 
-                    # Generate explanation
                     explain_prompt = f'''
 The user asked: "{question}",
 Here is the result:\n{str(answer_result)}
