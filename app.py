@@ -117,8 +117,8 @@ Here's the context:
 **Instructions:**
 1. Write Python code that addresses the user's question by querying or manipulating the DataFrame.
 2. **Use the `exec()` function to execute the generated code.**
-3. Do not import pandas.
-4. Change date column type to datetime.
+3. Do not import pandas, but you may assume `pd` (pandas) is already available.
+4. Change date column type to datetime if needed.
 5. Store the result in a variable named `ANSWER`.
 6. Assume the DataFrame is already loaded into a pandas DataFrame object named `{df_name}`.
 7. Keep the generated code concise and focused on answering the question.
@@ -128,14 +128,19 @@ Here's the context:
                 generated_code = response.text
 
                 try:
+                    # Clean up Gemini output
                     cleaned_code = generated_code.strip().replace("```python", "").replace("```", "")
-                    local_vars = {df_name: df.copy()}
+
+                    # Provide pd for datetime conversion
+                    local_vars = {df_name: df.copy(), "pd": pd}
                     exec(cleaned_code, {}, local_vars)
+
+                    # Get the result
                     answer_result = local_vars.get("ANSWER", "No result in variable ANSWER")
                     st.session_state.chat_history.append(("assistant", f"**Result:**\n{answer_result}"))
                     st.chat_message("assistant").markdown(f"**Result Preview:**\n{answer_result}")
 
-                    # Summary
+                    # Generate explanation
                     explain_prompt = f'''
 The user asked: "{question}",
 Here is the result:\n{str(answer_result)}
