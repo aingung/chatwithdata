@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import google.generativeai as genai
 import io
+import traceback
 
 # Set up the Streamlit app layout 
 st.title("My Chatbot and Data Analysis App") 
@@ -96,21 +97,69 @@ if user_input := st.chat_input("Ask anything about your data or start a chat..."
     st.chat_message("user").markdown(user_input)
 
     if model:
-        try:
-            if st.session_state.uploaded_data:
-                prompt = (
-                    f"{st.session_state.data_context}\n\n"
-                    f"Now answer the user's question: {user_input}"
-                )
-                response = model.generate_content(prompt)
-                bot_response = response.text
-                st.session_state.chat_history.append(("assistant", bot_response))
-                st.chat_message("assistant").markdown(bot_response)
-            else:
-                bot_response = "Please upload one or more CSV files first to analyze."
-                st.session_state.chat_history.append(("assistant", bot_response))
-                st.chat_message("assistant").markdown(bot_response)
-        except Exception as e:
-            st.error(f"An error occurred while generating the response: {e}")
+        if st.session_state.uploaded_data:
+            for file_name, df in st.session_state.uploaded_data:
+                df_name = "df"
+                example_record = df.head(2).to_string(index=False)
+                data_dict_text = "\n".join([f"{col}: {dtype}" for col, dtype in zip(df.columns, df.dtypes)])
+                question = user_input
+
+                # 1. Generate code using Gemini
+                code_prompt = f"""
+You are a helpful Python code generator.
+Your goal is to write Python code snippets based on the user's question and the provided DataFrame information.
+Here's the context:
+**User Question:**
+{question}
+**DataFrame Name:**
+{df_name}
+**DataFrame Details:**
+{data_dict_text}
+**Sample Data (Top 2 Rows):**
+{example_record}
+
+**Instructions:**
+1. Write Python code that addresses the user's question by querying or manipulating the DataFrame.
+2. **Crucially, use the `exec()` function to execute the generated code.**
+3. Do not import pandas
+4. Change date column type to datetime
+5. **Store the result of the executed code in a variable named `ANSWER`.**
+6. Assume the DataFrame is already loaded into a pandas DataFrame object named `{df_name}`.
+7. Keep the generated code concise and focused on answering the question.
+"""
+
+                response = model.generate_content(code_prompt)
+                generated_code = response.text
+
+                st.markdown("#### 🧠 Generated Python Code")
+                st.code(generated_code, language='python')
+
+                try:
+                    local_vars = {df_name: df.copy()}
+                    exec(generated_code, {}, local_vars)
+                    answer_result = local_vars.get("ANSWER", "No result in variable ANSWER")
+                    st.session_state.chat_history.append(("assistant", f"Executed the following code:\n```python\n{generated_code}\n```\n\n**Result:**\n{answer_result}"))
+                    st.chat_message("assistant").markdown(f"**Result Preview:**\n{answer_result}")
+
+                    # 2. Generate explanation and summary
+                    explain_prompt = f'''
+The user asked: "{question}",
+Here is the result:\n{str(answer_result)}
+Answer the question and summarize the findings,
+Include your opinion of the persona of this customer if relevant.
+'''
+                    explain_response = model.generate_content(explain_prompt)
+                    explanation_text = explain_response.text
+                    st.session_state.chat_history.append(("assistant", explanation_text))
+                    st.chat_message("assistant").markdown(f"**Summary & Interpretation:**\n{explanation_text}")
+
+                except Exception as e:
+                    error_msg = f"⚠️ An error occurred during code execution: {e}\n\n{traceback.format_exc()}"
+                    st.error(error_msg)
+                    st.session_state.chat_history.append(("assistant", error_msg))
+        else:
+            bot_response = "Please upload one or more CSV files first to analyze."
+            st.session_state.chat_history.append(("assistant", bot_response))
+            st.chat_message("assistant").markdown(bot_response)
     else:
         st.warning("Please configure the Gemini API Key to enable chat responses.")
