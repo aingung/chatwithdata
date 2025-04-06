@@ -10,7 +10,7 @@ gemini_api_key = st.text_input("Gemini API Key: ", placeholder="Type your API Ke
 
 # Initialize the Gemini Model
 model = None
-  if gemini_api_key:
+if gemini_api_key:
   try:
     # Configure Gemini with the provided API Key genai.configure(api_key=gemini_api_key)
     model = genai.GenerativeModel("gemini-pro") 
