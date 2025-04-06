@@ -135,10 +135,16 @@ Here's the context:
                 st.code(generated_code, language='python')
 
                 try:
+                    # Clean up Gemini output (remove markdown formatting)
+                    cleaned_code = generated_code.strip().replace("```python", "").replace("```", "")
+
+                    # Execute the code
                     local_vars = {df_name: df.copy()}
-                    exec(generated_code, {}, local_vars)
+                    exec(cleaned_code, {}, local_vars)
+
+                    # Show the result
                     answer_result = local_vars.get("ANSWER", "No result in variable ANSWER")
-                    st.session_state.chat_history.append(("assistant", f"Executed the following code:\n```python\n{generated_code}\n```\n\n**Result:**\n{answer_result}"))
+                    st.session_state.chat_history.append(("assistant", f"Executed the following code:\n```python\n{cleaned_code}\n```\n\n**Result:**\n{answer_result}"))
                     st.chat_message("assistant").markdown(f"**Result Preview:**\n{answer_result}")
 
                     # 2. Generate explanation and summary
