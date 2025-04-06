@@ -21,7 +21,7 @@ if gemini_api_key:
     except Exception as e:
         st.error(f"An error occurred while setting up the Gemini model: {e}")
 
-# Initialize session state for storing chat history and data 
+# Initialize session state
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 if "uploaded_data" not in st.session_state:
@@ -35,12 +35,12 @@ if "data_dictionary" not in st.session_state:
 for role, message in st.session_state.chat_history:
     st.chat_message(role).markdown(message)
 
-# Allow multiple file uploads for CSV
+# Upload CSV Files
 st.subheader("Upload CSV Files for Analysis")
 uploaded_files = st.file_uploader("Choose one or more CSV files", type=["csv"], accept_multiple_files=True)
 if uploaded_files:
     all_contexts = []
-    st.session_state.uploaded_data = []  # Reset stored data
+    st.session_state.uploaded_data = []
     for file in uploaded_files:
         try:
             df = pd.read_csv(file)
@@ -49,7 +49,7 @@ if uploaded_files:
             st.write(f"### Preview of {file.name}")
             st.dataframe(df.head())
 
-            # Build context for each file
+            # Build context for Gemini
             description = df.describe(include='all').to_string()
             sample_rows = df.head(3).to_string(index=False)
             columns_info = "\n".join([f"- {col}: {dtype}" for col, dtype in zip(df.columns, df.dtypes)])
@@ -64,13 +64,12 @@ if uploaded_files:
         except Exception as e:
             st.error(f"An error occurred while reading file '{file.name}': {e}")
 
-    # Store combined context
     st.session_state.data_context = (
         "You are a helpful data analyst AI. The user uploaded multiple datasets. Here is the context for each:\n\n"
         + "\n\n".join(all_contexts)
     )
 
-# Upload optional data dictionary
+# Upload Data Dictionary (Optional)
 st.subheader("Upload Data Dictionary (Optional)")
 dict_file = st.file_uploader("Choose a CSV data dictionary file", type=["csv"], key="dict_file")
 if dict_file is not None:
@@ -80,18 +79,15 @@ if dict_file is not None:
         st.success("Data dictionary successfully uploaded and read.")
         st.write("### Data Dictionary Preview")
         st.dataframe(data_dict)
-
-        # Append dictionary to data context
         dict_info = data_dict.to_string(index=False)
         st.session_state.data_context += f"\n\nData Dictionary:\n{dict_info}"
-
     except Exception as e:
         st.error(f"An error occurred while reading the data dictionary file: {e}")
 
-# Checkbox for indicating data analysis need 
+# Analyze checkbox
 analyze_data_checkbox = st.checkbox("Analyze CSV Data with AI")
 
-# Capture user input and generate bot response
+# User input & AI response
 if user_input := st.chat_input("Ask anything about your data or start a chat..."):
     st.session_state.chat_history.append(("user", user_input))
     st.chat_message("user").markdown(user_input)
@@ -104,7 +100,7 @@ if user_input := st.chat_input("Ask anything about your data or start a chat..."
                 data_dict_text = "\n".join([f"{col}: {dtype}" for col, dtype in zip(df.columns, df.dtypes)])
                 question = user_input
 
-                # 1. Generate code using Gemini
+                # Generate code
                 code_prompt = f"""
 You are a helpful Python code generator.
 Your goal is to write Python code snippets based on the user's question and the provided DataFrame information.
@@ -120,10 +116,10 @@ Here's the context:
 
 **Instructions:**
 1. Write Python code that addresses the user's question by querying or manipulating the DataFrame.
-2. **Crucially, use the `exec()` function to execute the generated code.**
-3. Do not import pandas
-4. Change date column type to datetime
-5. **Store the result of the executed code in a variable named `ANSWER`.**
+2. **Use the `exec()` function to execute the generated code.**
+3. Do not import pandas.
+4. Change date column type to datetime.
+5. Store the result in a variable named `ANSWER`.
 6. Assume the DataFrame is already loaded into a pandas DataFrame object named `{df_name}`.
 7. Keep the generated code concise and focused on answering the question.
 """
@@ -131,23 +127,15 @@ Here's the context:
                 response = model.generate_content(code_prompt)
                 generated_code = response.text
 
-                st.markdown("#### 🧠 Generated Python Code")
-                st.code(generated_code, language='python')
-
                 try:
-                    # Clean up Gemini output (remove markdown formatting)
                     cleaned_code = generated_code.strip().replace("```python", "").replace("```", "")
-
-                    # Execute the code
                     local_vars = {df_name: df.copy()}
                     exec(cleaned_code, {}, local_vars)
-
-                    # Show the result
                     answer_result = local_vars.get("ANSWER", "No result in variable ANSWER")
-                    st.session_state.chat_history.append(("assistant", f"Executed the following code:\n```python\n{cleaned_code}\n```\n\n**Result:**\n{answer_result}"))
+                    st.session_state.chat_history.append(("assistant", f"**Result:**\n{answer_result}"))
                     st.chat_message("assistant").markdown(f"**Result Preview:**\n{answer_result}")
 
-                    # 2. Generate explanation and summary
+                    # Summary
                     explain_prompt = f'''
 The user asked: "{question}",
 Here is the result:\n{str(answer_result)}
