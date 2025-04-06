@@ -8,28 +8,23 @@ import traceback
 st.title("My Chatbot and Data Analysis App") 
 st.subheader("Conversation and Data Analysis")
 
-# Chat history tools
-if "chat_cleared" not in st.session_state:
-    st.session_state.chat_cleared = False
+# Chat history state
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
+# Chat history tools
 col1, col2 = st.columns(2)
 with col1:
     if st.button("🧹 Clear Chat History"):
         st.session_state.chat_history = []
-        st.session_state.chat_cleared = True
 with col2:
     if st.session_state.chat_history:
         chat_text = "\n\n".join([f"{role.upper()}: {message}" for role, message in st.session_state.chat_history])
         st.download_button("💾 Download Chat History", data=chat_text, file_name="chat_history.txt")
 
-# Display previous chat history
-if not st.session_state.chat_cleared:
-    for role, message in st.session_state.chat_history:
-        st.chat_message(role).markdown(message)
-else:
-    st.info("Chat history has been cleared. Refresh the page to hide old messages.")
+# ✅ Always show previous chat history
+for role, message in st.session_state.chat_history:
+    st.chat_message(role).markdown(message)
 
 # Gemini API Setup
 gemini_api_key = st.secrets['gemini_api_key']
