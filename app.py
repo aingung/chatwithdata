@@ -8,13 +8,15 @@ import traceback
 st.title("My Chatbot and Data Analysis App") 
 st.subheader("Conversation and Data Analysis")
 
-# Initialize session state for chat
+# Initialize session state
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
-
-# ✅ Always show previous chat history
-for role, message in st.session_state.chat_history:
-    st.chat_message(role).markdown(message)
+if "uploaded_data" not in st.session_state:
+    st.session_state.uploaded_data = []
+if "data_context" not in st.session_state:
+    st.session_state.data_context = ""
+if "data_dictionary" not in st.session_state:
+    st.session_state.data_dictionary = None
 
 # Gemini API Setup
 gemini_api_key = st.secrets['gemini_api_key']
@@ -26,14 +28,6 @@ if gemini_api_key:
         st.success("Gemini API Key successfully configured.")
     except Exception as e:
         st.error(f"An error occurred while setting up the Gemini model: {e}")
-
-# Other session state
-if "uploaded_data" not in st.session_state:
-    st.session_state.uploaded_data = []
-if "data_context" not in st.session_state:
-    st.session_state.data_context = ""
-if "data_dictionary" not in st.session_state:
-    st.session_state.data_dictionary = None
 
 # Upload CSV Files
 st.subheader("Upload CSV Files for Analysis")
@@ -86,7 +80,11 @@ if dict_file is not None:
 # Analyze checkbox
 analyze_data_checkbox = st.checkbox("Analyze CSV Data with AI")
 
-# User input & AI response
+# ✅ Show chat history BELOW the checkbox
+for role, message in st.session_state.chat_history:
+    st.chat_message(role).markdown(message)
+
+# Handle user input & AI response
 if user_input := st.chat_input("Ask anything about your data or start a chat..."):
     st.session_state.chat_history.append(("user", user_input))
     st.chat_message("user").markdown(user_input)
@@ -99,7 +97,7 @@ if user_input := st.chat_input("Ask anything about your data or start a chat..."
                 data_dict_text = "\n".join([f"{col}: {dtype}" for col, dtype in zip(df.columns, df.dtypes)])
                 question = user_input
 
-                # Generate code
+                # Prompt for code generation
                 code_prompt = f"""
 You are a helpful Python code generator.
 Your goal is to write Python code snippets based on the user's question and the provided DataFrame information.
@@ -134,6 +132,7 @@ Here's the context:
                     st.session_state.chat_history.append(("assistant", f"**Result:**\n{answer_result}"))
                     st.chat_message("assistant").markdown(f"**Result Preview:**\n{answer_result}")
 
+                    # Prompt for explanation
                     explain_prompt = f'''
 The user asked: "{question}",
 Here is the result:\n{str(answer_result)}
